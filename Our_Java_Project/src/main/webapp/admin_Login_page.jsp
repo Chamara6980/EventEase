@@ -15,7 +15,7 @@
         <p style="color: red;">${error}</p>  
     </c:if>  
 
-    <form action="log" method="POST">
+    <form action="adminLoginServlet" method="POST">
       
         <label for="username">User Name:</label>   
         <input type="text" id="username" name="EC_Username" required><br> 
