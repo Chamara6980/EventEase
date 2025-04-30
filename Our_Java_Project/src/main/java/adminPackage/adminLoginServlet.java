@@ -27,24 +27,19 @@ public class adminLoginServlet extends HttpServlet {
             RequestDispatcher dis = request.getRequestDispatcher("customer_Care_agent_interface.jsp");
             dis.forward(request, response);
         } 
-        	else if ("admin2".equals(username) && "admin456".equals(password)) 
+        	else if ("evec".equals(username) && "evec1".equals(password)) 
         	{
             // Redirect to Admin 2's page
-            RequestDispatcher dis = request.getRequestDispatcher("AdminLogin2.jsp");
+            RequestDispatcher dis = request.getRequestDispatcher("event_creater_interface.jsp");
             dis.forward(request, response);
         } 
-        	else if ("admin3".equals(username) && "admin789".equals(password)) 
+        	else if ("evem".equals(username) && "evem1".equals(password)) 
         	{
             // Redirect to Admin 3's page
-            RequestDispatcher dis = request.getRequestDispatcher("AdminPage3.jsp");
+            RequestDispatcher dis = request.getRequestDispatcher("event_manage_interface.jsp");
             dis.forward(request, response);
         } 
-        	else if ("admin4".equals(username) && "admin101".equals(password)) 
-        {
-            // Redirect to Admin 4's page
-            RequestDispatcher dis = request.getRequestDispatcher("AdminPage4.jsp");
-            dis.forward(request, response);
-        } 
+
         	else 
         {
             // Invalid credentials, redirect back to login page with error message
