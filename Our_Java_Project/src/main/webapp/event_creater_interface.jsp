@@ -38,6 +38,11 @@ input[type="submit"] {
   margin-top: 15px;  
   padding: 10px 20px;  
   font-size: 16px;  
+  border: none;  
+  border-radius: 4px;  
+  color: white;  
+  cursor: pointer;  
+  transition: background-color 0.3s;  
 }  
 input[type="submit"]:hover {  
   background-color: #2980b9;  
@@ -133,6 +138,22 @@ input[type="text"]:focus {
   background-color: #2980b9;  
 }  
 
+/* Style Remove Package Button */  
+.remove-package-btn {  
+  background-color: #e74c3c;  
+  margin-left: 10px;  
+  padding: 6px 12px;  
+  border: none;  
+  border-radius: 4px;  
+  color: #fff;  
+  font-size: 14px;  
+  cursor: pointer;  
+  transition: background-color 0.3s;  
+}  
+
+.remove-package-btn:hover {  
+  background-color: #c0392b;  
+}  
   </style>  
 </head>  
 <body>  
@@ -147,7 +168,9 @@ input[type="text"]:focus {
           <th>PackageName</th>  
           <th>Type</th>  
           <th>Venue</th>  
+          <th>Price</th> <!-- New Column Header -->  
           <th>Items</th>  
+          <th>Action</th> <!-- For Remove button -->  
         </tr>  
       </thead>  
       <tbody>  
@@ -169,26 +192,30 @@ input[type="text"]:focus {
       row.insertCell().innerHTML = '<input type="text" name="packageName[]" required>';  
       row.insertCell().innerHTML = '<input type="text" name="type[]" required>';  
       row.insertCell().innerHTML = '<input type="text" name="venue[]" required>';  
+      row.insertCell().innerHTML = '<input type="text" name="price[]" required>';  
 
       // Items cell  
       const itemsCell = row.insertCell();  
       const uniqueId = 'itemsDiv_' + Date.now() + Math.floor(Math.random() * 1000);  
-
-      // Container for items  
       const itemsDiv = document.createElement('div');  
       itemsDiv.id = uniqueId;  
-      // Add initial item input  
       addItemFieldToDiv(itemsDiv, uniqueId);  
-      
-      // Append the container and add button  
       itemsCell.appendChild(itemsDiv);  
-      
       const addBtn = document.createElement('button');  
       addBtn.type = 'button';  
       addBtn.className = 'add-item-btn';  
       addBtn.innerText = '+';  
       addBtn.onclick = () => addItemFieldToDiv(itemsDiv, uniqueId);  
       itemsCell.appendChild(addBtn);  
+
+      // Action cell with Remove button  
+      const actionCell = row.insertCell();  
+      const removePackageBtn = document.createElement('button');  
+      removePackageBtn.type = 'button';  
+      removePackageBtn.className = 'remove-package-btn';  
+      removePackageBtn.innerText = 'Remove';  
+      removePackageBtn.onclick = () => tableBody.removeChild(row);  
+      actionCell.appendChild(removePackageBtn);  
 
       tableBody.appendChild(row);  
     }  
