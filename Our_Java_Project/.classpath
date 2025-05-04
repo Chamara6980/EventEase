@@ -21,5 +21,6 @@
 	<classpathentry kind="lib" path="C:/Users/chama/Downloads/Compressed/drive-download-20250430T042442Z-1-001/mysql-connector-java-5.1.48.jar"/>
 	<classpathentry kind="lib" path="C:/Users/chama/Downloads/Compressed/drive-download-20250430T042442Z-1-001/mysql-connector-java-5.1.48-bin.jar"/>
 	<classpathentry kind="lib" path="C:/Users/chama/Downloads/Compressed/drive-download-20250430T042442Z-1-001/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/chama/Downloads/Compressed/drive-download-20250430T042442Z-1-001/mysql-connector-j-9.3.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
