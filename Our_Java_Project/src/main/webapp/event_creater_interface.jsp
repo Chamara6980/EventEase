@@ -4,61 +4,78 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Event Creator Interface</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons (optional) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
+            background: linear-gradient(to right, #f2f2f2, #e6f2ff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        h2 {
-            color: #333;
+        .card {
+            border-radius: 1rem;
         }
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            margin: 0 auto;
+        .form-label {
+            font-weight: 500;
         }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        input[type="submit"], input[type="button"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-        input[type="submit"]:hover, input[type="button"]:hover {
-            background-color: #45a049;
+        .btn-success, .btn-primary {
+            font-weight: bold;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
-    <h2>Create New Package</h2>
-    <form action="insert" method="post">
-        Package ID: <input type="number" name="Package_Id" required><br>
-        Package Name: <input type="text" name="Package_Name" required><br>
-        Type: <input type="text" name="Type" required><br>
-        Venue: <input type="text" name="Venue" required><br>
-        Items: <input type="text" name="Items" required><br>
-        Price: <input type="text" name="Price" required><br><br>
-        <input type="submit" value="Create Package">
-    </form>
 
-    <br><br>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card p-4 shadow-lg" style="width: 100%; max-width: 600px;">
+            <h2 class="card-title text-center text-success mb-4">
+                <i class="bi bi-plus-circle-fill"></i> Create New Package
+            </h2>
+            
+            <form action="insert" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Package ID</label>
+                    <input type="number" name="Package_Id" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Package Name</label>
+                    <input type="text" name="Package_Name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Type</label>
+                    <input type="text" name="Type" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Venue</label>
+                    <input type="text" name="Venue" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Items</label>
+                    <input type="text" name="Items" class="form-control" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Price</label>
+                    <input type="text" name="Price" class="form-control" required>
+                </div>
+                <div class="d-grid mb-2">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle-fill"></i> Create Package
+                    </button>
+                </div>
+            </form>
 
-    <!-- View Packages Button -->
-    <form action="view" method="get">
-        <input type="submit" value="View All Packages">
-    </form>
+            <form action="view" method="get" class="d-grid">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-eye-fill"></i> View All Packages
+                </button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
