@@ -3,7 +3,7 @@ package Packages;
 import java.sql.*;
 import java.util.*;
 
-public class DBConnect {
+public class PackageInsert {
 
     private String dburl = "jdbc:mysql://localhost:3306/eventease_database";
     private String dbUsername = "root";

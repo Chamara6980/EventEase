@@ -1,10 +1,13 @@
 package Packages;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
@@ -23,7 +26,7 @@ public class InsertPackageDetails extends HttpServlet {
             String price = request.getParameter("Price");
 
             Event_Creater_Packages pkg = new Event_Creater_Packages(packageID, packageName, type, venue, items, price);
-            DBConnect dbc = new DBConnect();
+            PackageInsert dbc = new PackageInsert();
             String result = dbc.insert(pkg);
 
             if ("Data Entered".equals(result)) {
