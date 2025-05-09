@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+         
+  
+         <servlet>
+         		<servlet-name>EnterEvent</servlet-name>
+         		<servlet-class>com.event.EnterEventServlet_manager</servlet-class>
+     
+         </servlet>
+         
+         <servlet-mapping>
+        		 <servlet-name>EnterEvent</servlet-name>
+        		 <url-pattern>/EnterEventServlet_manager</url-pattern>
+        		 
+         </servlet-mapping>
+         
+         
+          <servlet> 
+          		
+	          <servlet-name>ItemInsert</servlet-name>
+          	  <servlet-class>com.event.AddItemsServlet_manager</servlet-class>
+          </servlet>
+          
+          <servlet-mapping>
+        		 <servlet-name>ItemInsert</servlet-name>
+        		 <url-pattern>/AddItemsServlet_manager</url-pattern>
+        		 
+         </servlet-mapping>
+         
+         
+         
+         <servlet> 
+          		
+	          <servlet-name>updateItems</servlet-name>
+          	  <servlet-class>com.event.UpdateItemsServlet_manager</servlet-class>
+          </servlet>
+          
+          <servlet-mapping>
+        		 <servlet-name>updateItems</servlet-name>
+        		 <url-pattern>/UpdateItemsServlet_manager</url-pattern>
+        		 
+         </servlet-mapping>
+         
+         
+         
+          <servlet> 
+          		
+	          <servlet-name>deleteEvent</servlet-name>
+          	  <servlet-class>com.event.DeleteEventServlet_manager</servlet-class>
+          </servlet>
+          
+          <servlet-mapping>
+        		 <servlet-name>deleteEvent</servlet-name>
+        		 <url-pattern>/DeleteEventServlet_manager</url-pattern>
+        		 
+         </servlet-mapping>
+         
+         
+         
+         
+  </web-app> 
