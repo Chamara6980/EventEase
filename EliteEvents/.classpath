@@ -8,14 +8,15 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/chama/OneDrive/Desktop/FINAL_MY_PROJECT/lib/jakarta.servlet.jsp.jstl-api-2.0.0-RC1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/chama/OneDrive/Desktop/FINAL_MY_PROJECT/lib/javax.servlet-3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/chama/OneDrive/Desktop/FINAL_MY_PROJECT/lib/jstl-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/chama/OneDrive/Desktop/FINAL_MY_PROJECT/lib/jstl-api-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/chama/OneDrive/Desktop/FINAL_MY_PROJECT/lib/junit-4.13.jar"/>
-	<classpathentry kind="lib" path="C:/Users/chama/OneDrive/Desktop/FINAL_MY_PROJECT/lib/mysql-connector-j-9.3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/chama/OneDrive/Desktop/FINAL_MY_PROJECT/lib/mysql-connector-java-5.1.48.jar"/>
-	<classpathentry kind="lib" path="C:/Users/chama/OneDrive/Desktop/FINAL_MY_PROJECT/lib/mysql-connector-java-5.1.48-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/chama/OneDrive/Desktop/FINAL_MY_PROJECT/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/junit-4.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/mysql-connector-java-5.1.48.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/mysql-connector-java-5.1.48-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/jakarta.servlet.jsp.jstl-api-2.0.0-RC1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/javax.servlet-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/jstl-api-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ASUS/Downloads/drive-download-20250504T090424Z-001/mysql-connector-j-9.3.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

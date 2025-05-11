@@ -8,7 +8,7 @@ import com.EliteEvents.Model.EventPackages;
 
 public class EventPackagesDao {
 
-    private final String dburl = "jdbc:mysql://localhost:3306/eventease_database";
+    private final String dburl = "jdbc:mysql://127.0.0.1:3306/eventease_database";
     private final String dbUsername = "root";
     private final String dbPassword = "Chamara123@";
     private final String dbDriver = "com.mysql.cj.jdbc.Driver";

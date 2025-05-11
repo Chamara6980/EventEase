@@ -43,5 +43,42 @@
         <servlet-name>DeletePackageServlet</servlet-name>
         <url-pattern>/delete</url-pattern>
     </servlet-mapping>
+    
+    
+    
+    <!-- ========== Servlet Configurations ========== -->
+
+    <!-- LogBookServlet -->
+    <servlet>
+        <servlet-name>LogBookServlet</servlet-name>
+        <servlet-class>com.EliteEvents.Controller.LogBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogBookServlet</servlet-name>
+        <url-pattern>/logbookinsert</url-pattern>
+    </servlet-mapping>
+
+    <!-- LogBookUpdateServlet -->
+    <servlet>
+        <servlet-name>LogBookUpdateServlet</servlet-name>
+        <servlet-class>com.EliteEvents.Controller.LogBookUpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogBookUpdateServlet</servlet-name>
+        <url-pattern>/logbookupdate</url-pattern>
+    </servlet-mapping>
+
+    <!-- LogBookDeleteServlet -->
+    <servlet>
+        <servlet-name>LogBookDeleteServlet</servlet-name>
+        <servlet-class>com.EliteEvents.Controller.LogBookDeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogBookDeleteServlet</servlet-name>
+        <url-pattern>/logbookdelete</url-pattern>
+    </servlet-mapping>
+
+    <!-- LogBookViewServlet -->
+    
 
 </web-app>
