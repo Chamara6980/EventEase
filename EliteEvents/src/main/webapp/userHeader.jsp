@@ -1,7 +1,7 @@
 <%@ page import="javax.servlet.http.HttpSession" %>
 <%
     HttpSession sessions = request.getSession(false);
-    String username = (sessions != null) ? (String) sessions.getAttribute("EC_Username") : null;
+    String username = (sessions != null) ? (String) sessions.getAttribute("username") : null;
 %>
 
 <!-- Bootstrap CSS and Icons -->
@@ -102,7 +102,7 @@
                     </li>
                 <% } else { %>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin_Login_page.jsp"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                        <a class="nav-link" href="userLogin.jsp"><i class="bi bi-box-arrow-in-right"></i> Login</a>
                     </li>
                 <% } %>
             </ul>

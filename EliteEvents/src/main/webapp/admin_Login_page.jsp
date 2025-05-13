@@ -1,8 +1,9 @@
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Event Creator Login</title>
+  <title>Admin Login</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -98,7 +99,7 @@
 <body>
 
   <div class="login-card">
-    <h3>Event Creator Login</h3>
+    <h3>Admin Login</h3>
 
     <!-- Error Message -->
     <c:if test="${not empty error}">
@@ -128,7 +129,10 @@
     </div>
   </div>
 
+
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+
 </html>
