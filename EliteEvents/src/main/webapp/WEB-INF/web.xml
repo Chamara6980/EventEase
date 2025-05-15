@@ -9,6 +9,43 @@
 	<welcome-file>eventhubhomepage.jsp</welcome-file>
 </welcome-file-list>
 
+<!-- User Login -->
+<servlet>
+		<servlet-name>LoginViewServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.LoginViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginViewServlet</servlet-name>
+		<url-pattern>/loginview</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.LoginValidationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/loginform</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RegisterViewServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.RegisterViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RegisterViewServlet</servlet-name>
+		<url-pattern>/register</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RegisterServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.RegisterServlet</servlet-class>
+	</servlet>
+<servlet-mapping>
+		<servlet-name>RegisterServlet</servlet-name>
+		<url-pattern>/registerform</url-pattern>
+	</servlet-mapping>
+
 
     <!-- Insert Package Servlet -->
     <servlet>
@@ -95,6 +132,68 @@
     <url-pattern>/login</url-pattern>
 </servlet-mapping>
     
+    <!-- Event Booking Section -->
+    <servlet>
+		<servlet-name>DisplayEventServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.DisplayEventServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DisplayEventServlet</servlet-name>
+		<url-pattern>/event</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HomeViewServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.HomeViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HomeViewServlet</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BookingFormServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.BookingFormServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookingFormServlet</servlet-name>
+		<url-pattern>/bookingForm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BookinginsertServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.BookinginsertServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookinginsertServlet</servlet-name>
+		<url-pattern>/insertBooking</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BookingListServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.BookingListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookingListServlet</servlet-name>
+		<url-pattern>/booking</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BookingEditServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.BookingEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookingEditServlet</servlet-name>
+		<url-pattern>/editBooking</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>BookingDeleteServlet</servlet-name>
+		<servlet-class>com.EliteEvents.Controller.BookingDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookingDeleteServlet</servlet-name>
+		<url-pattern>/deleteBooking</url-pattern>
+	</servlet-mapping>
     
  
     
