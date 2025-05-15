@@ -18,41 +18,46 @@ import com.EliteEvents.Model.Event_manager;
 public class EnterEventServlet_manager extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		PrintWriter out = response.getWriter();
-		response.setContentType("text/html");
-		 
-		String event_id = request.getParameter("event_id");
-		String pck_id = request.getParameter("pck_id");     //enterevent.jsp eke input eke names pass karanna//
-		
-		boolean isTrue;
-		
-		isTrue = EventDBUtil_manager.validate(event_id, pck_id);
-		
-		if (isTrue == true ) {
-			
-			List<Event_manager> eventDetails = EventDBUtil_manager.getEvent(event_id);
-			request.setAttribute("eventDetails", eventDetails);
-			
-			RequestDispatcher dis = request.getRequestDispatcher("ShowEvent_manager.jsp");
-			
-			dis.forward(request, response);
-			
-			
-		}
-		
-		
-		else {
-			
-			out.println("<script type='text/javascript'>");
-			out.println("alert('Your Event Id or package Id is incorrect');");
-			out.println("location='EnterEvent_manager.jsp'");
-			out.println("</script>");
-		}
-		
-	}
+	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	        
+	        // Set response type and prepare output writer
+	        response.setContentType("text/html");
+	        PrintWriter out = response.getWriter();
 
+	        // Retrieve parameters from the request
+	        String event_id = request.getParameter("event_id");
+	        String pck_id = request.getParameter("pck_id"); // Match input names in EnterEvent.jsp
+
+	        boolean isValid;
+
+	        try {
+	            // Validate Event ID and Package ID
+	            isValid = EventDBUtil_manager.validate(event_id, pck_id);
+
+	            if (isValid) {
+	                // If valid, retrieve event details and forward to ShowEvent.jsp
+	                List<Event_manager> eventDetails = EventDBUtil_manager.getEvent(event_id);
+	                request.setAttribute("eventDetails", eventDetails);
+
+	                RequestDispatcher dispatcher = request.getRequestDispatcher("ShowEvent_manager.jsp");
+	                dispatcher.forward(request, response);
+	            } else {
+	                // If validation fails, show alert and redirect back to EnterEvent.jsp
+	                out.println("<script type='text/javascript'>");
+	                out.println("alert('Your Event ID or Package ID is incorrect. Please try again.');");
+	                out.println("location='EnterEvent_manager.jsp';");
+	                out.println("</script>");
+	            }
+	        } catch (Exception e) {
+	            // Handle unexpected exceptions
+	            e.printStackTrace();
+	            out.println("<script type='text/javascript'>");
+	            out.println("alert('An error occurred while processing your request. Please try again later.');");
+	            out.println("location='EnterEvent_manager.jsp';");
+	            out.println("</script>");
+	        } finally {
+	            // Close resources if needed
+	            out.close();
+	        }
+	    }
 }

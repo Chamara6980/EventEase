@@ -2,7 +2,7 @@ package com.EliteEvents.Dao;
 
 
 import java.sql.Connection;
-
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -18,30 +18,33 @@ public class EventDBUtil_manager {
 	private static ResultSet rs = null;
 	
 	
-public static boolean validate(String event_id , String pck_id) {
-	
-	
-		int convertedID = Integer.parseInt(event_id.trim());
-		
-		try {
-			con = DBConnect_manager.getConnection();
-			stmt = con.createStatement();
-			String sql = "select * from event_manager_new where event_id = '"+convertedID+"' and Pck_id = '"+pck_id+"' ";
-			rs = stmt.executeQuery(sql);
-			
-			if (rs.next()) {
-				isSuccess = true;
-			} else {
-				isSuccess = false;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return isSuccess;
-	}
+	public static boolean validate(String event_id, String pck_id) {
+	    boolean isSuccess = false;
+	    
+	    // Validate both Event ID and Package ID (numeric check for both)
+	    if (event_id == null || pck_id == null || !event_id.matches("\\d+") || !pck_id.matches("\\d+") || pck_id.trim().isEmpty()) {
+	        return false;
+	    }
 
+	    try (Connection con = DBConnect_manager.getConnection();
+	         PreparedStatement pstmt = con.prepareStatement(
+	                 "SELECT * FROM event_manager_new WHERE event_id = ? AND pck_id = ?")) {
+
+	        // Set parameters for the prepared statement
+	        pstmt.setInt(1, Integer.parseInt(event_id.trim()));
+	        pstmt.setString(2, pck_id.trim());
+
+	        // Execute query
+	        try (ResultSet rs = pstmt.executeQuery()) {
+	            isSuccess = rs.next(); // Check if any record exists
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return isSuccess;
+	}
 
 public static List<Event_manager> getEvent(String event) {
 	
@@ -78,44 +81,48 @@ public static List<Event_manager> getEvent(String event) {
 
 
 
-public static boolean AddItems (String pck_id , String pck_name , String type , String items, String price) {
+public static boolean AddItems(String pck_id, String pck_name, String type, String items, String price) {
+    boolean isSuccess = false;
 
-	
-	boolean isSuccess = false;
-	
-	
-	try {
-		
-		con = DBConnect_manager.getConnection();
-		
-		stmt = con.createStatement();
-		
-		String sql = " INSERT INTO event_manager_new VALUES (0 , '"+pck_id+"', '"+pck_name+"' , '"+type+"' , '"+items+"' , '"+price+"' ) ";
-		
-		
-		int rs = stmt.executeUpdate(sql);
-		
-		if (rs > 0 ) {
-			
-			isSuccess = true;
-		}
-		
-		else {
-			
-			isSuccess = false;
-		}
-		
-		
-	} 
-	catch (Exception e) {
-		
-		e.printStackTrace();
-	}
-	
-	
-	return isSuccess;
-	
-	}
+    // Validate Package ID (numeric check)
+    if (pck_id == null || !pck_id.matches("\\d+")) {
+        return false; 
+    }
+
+  
+    if (pck_name == null || !pck_name.matches("[a-zA-Z\\s]+")) {
+        return false; 
+    }
+    if (type == null || !type.matches("[a-zA-Z\\s]+")) {
+        return false; 
+    }
+    if (items == null || !items.matches("[a-zA-Z\\s]+")) {
+        return false; 
+    }
+
+    // Validate Price (numeric check)
+    if (price == null || !price.matches("\\d+(\\.\\d{1,2})?")) {
+        return false; 
+    }
+
+    try {
+        con = DBConnect_manager.getConnection();
+        stmt = con.createStatement();
+        String sql = "INSERT INTO event_manager_new VALUES (0, '" + pck_id + "', '" + pck_name + "', '" + type + "', '" + items + "', '" + price + "')";
+        
+        int rs = stmt.executeUpdate(sql);
+
+        if (rs > 0) {
+            isSuccess = true;
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return isSuccess;
+}
+
 
 	
 	

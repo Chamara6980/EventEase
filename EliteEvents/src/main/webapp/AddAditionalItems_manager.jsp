@@ -1,123 +1,152 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Add Additional Items</title>
 
-  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
     <style>
         body {
-            background: linear-gradient(to right, #f2f2f2, #e6f2ff);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1f1f1f, #4c4c4c);
+            color: #f1f1f1;
+            min-height: 100vh;
         }
 
-        .card {
+        .form-container {
+            background-color: #2d2d35;
             border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+            margin: 4rem auto;
+            padding: 2rem 2rem;
+            color: #f1f1f1;
         }
 
         h1 {
+            color: #d300ff;
+            text-shadow: 0 0 8px #d300ff, 0 0 12px #d300ff;
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-            color: #702963;
-        }
-
-        form {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            padding: 30px;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
         }
 
         label {
-            font-weight: 500;
-            margin-top: 10px;
-        }
-
-        input[type="text"],
-        input[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 0.5rem;
-            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #d300ff;
+            text-shadow: 0 0 6px #d300ff;
         }
 
         input[type="text"] {
-            border: 1px solid #ced4da;
-            background-color: #f8f9fa;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            background-color: #44444e;
+            color: #f1f1f1;
+            box-shadow: inset 0 0 8px rgba(211, 0, 255, 0.7);
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            background-color: #5a1aff;
+            outline: none;
+            box-shadow: 0 0 12px #d300ff;
+            color: white;
         }
 
         input[type="submit"] {
-            background-color: #702963;
-            color: #fff;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #d300ff;
             border: none;
+            border-radius: 0.75rem;
+            color: white;
             font-weight: bold;
-            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+            box-shadow: 0 0 12px #d300ff;
+            transition: box-shadow 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: #5a1f50;
+            box-shadow: 0 0 24px 6px #d300ff;
         }
 
-        .redirect-button {
+        .btn-home {
             display: block;
-            margin: 30px auto;
-            padding: 12px 24px;
-            width:40%;
-            background: linear-gradient(to right, #66bb6a, #43a047);
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.75rem;
+            background-color: #8a2be2; /* Electric Violet */
+            color: #fff;
             font-weight: bold;
-            border-radius: 0.5rem;
             text-align: center;
-            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+            text-decoration: none;
+            box-shadow: 0 0 12px #8a2be2;
+            transition: box-shadow 0.3s ease-in-out, transform 0.2s;
         }
 
-        .redirect-button:hover {
-            background: linear-gradient(to right, #43a047, #66bb6a);
-            transform: scale(1.05);
+        .btn-home:hover {
+            box-shadow: 0 0 24px 6px #8a2be2;
+            transform: scale(1.03);
         }
     </style>
+    
+    <script>
+        function validateForm() {
+            var pck_id = document.forms["addItemsForm"]["pck_id"].value;
+            var pck_name = document.forms["addItemsForm"]["pck_name"].value;
+            var type = document.forms["addItemsForm"]["type"].value;
+            var items = document.forms["addItemsForm"]["Extraitems"].value;
+            var price = document.forms["addItemsForm"]["price"].value;
+
+            // Check if Package ID is numeric
+            if (!/^\d+$/.test(pck_id)) {
+                alert("Package ID must be a numeric value.");
+                return false;
+            }
+
+            // Check if Package Name, Type, and Additional Items are alphabetical
+            if (!/^[a-zA-Z\s]+$/.test(pck_name)) {
+                alert("Package Name should only contain alphabetical characters.");
+                return false;
+            }
+            if (!/^[a-zA-Z\s]+$/.test(type)) {
+                alert("Type should only contain alphabetical characters.");
+                return false;
+            }
+            if (!/^[a-zA-Z\s]+$/.test(items)) {
+                alert("Additional Items should only contain alphabetical characters.");
+                return false;
+            }
+
+            // Check if Price is numeric
+            if (!/^\d+(\.\d{1,2})?$/.test(price)) {
+                alert("Price should be a valid numeric value.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+  
 </head>
 <body>
 
-
-<nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #702963;">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">EventMaster</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="homepage.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                <li class="nav-item"><a class="btn btn-outline-light ms-2" href="admin_Login_page.jsp">Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
-
-<div class="container my-5">
+<div class="form-container">
     <h1>Add Additional Items</h1>
-    <form action="AddItemsServlet_manager" method="post">
+    
+<form name="addItemsForm" action="AddItemsServlet_manager" method="post" onsubmit="return validateForm()">
         <label for="pck_id">Package ID</label>
         <input type="text" name="pck_id" placeholder="Enter Package ID">
 
@@ -138,38 +167,9 @@
 
     <a href="ManagerHome.jsp" class="redirect-button">Go to Home Page</a>
 </div>
+</div>
 
-
-
-<footer style="background-color: #702963;" class="text-white mt-5 pt-4 pb-2">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <h5>EventMaster</h5>
-                <p>Creating unforgettable experiences through seamless event management.</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white text-decoration-none">Home</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Events</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Packages</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Follow Us</h5>
-                <a href="https://web.facebook.com/" class="text-white me-2"><i class="bi bi-facebook"></i></a>
-                <a href="https://x.com/" class="text-white me-2"><i class="bi bi-twitter"></i></a>
-                <a href="https://www.instagram.com/" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                <a href="https://lk.linkedin.com/" class="text-white"><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-        <hr class="bg-light">
-        <p class="mb-0">&copy; 2025 EventMaster. All Rights Reserved.</p>
-    </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+<%@ include file="footer.jsp" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
