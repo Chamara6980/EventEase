@@ -342,7 +342,7 @@
     <div class="container text-center get-involved-section">
       <h2 class="section-title animated-heading">Get Involved</h2>
       <p class="animated-text">Ready to create your own event? Start by adding your event details below!</p>
-      <a href="#" class="btn btn-main pulse-btn">Book Event</a>
+      <a href="event" class="btn btn-main pulse-btn">Book Event</a>
     </div>
   </section>
 

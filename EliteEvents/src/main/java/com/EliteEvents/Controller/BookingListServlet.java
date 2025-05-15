@@ -5,13 +5,12 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sliit.eventmng.dao.BookingDAO;
-import sliit.eventmng.model.Booking;
+import com.EliteEvents.Dao.BookingDAO;
+import com.EliteEvents.Model.Booking;
 
 
 //@WebServlet("/BookingListServlet")
