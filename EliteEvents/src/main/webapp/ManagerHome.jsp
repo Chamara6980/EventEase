@@ -1,108 +1,113 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Event Manager Dashboard</title>
-    
-  
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    
+
     <style>
         body {
-            background: linear-gradient(to right, #f2f2f2, #e6f2ff);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1f1f1f, #4c4c4c);
+            color: #f1f1f1;
+            min-height: 100vh;
         }
-        .card {
+
+        .dashboard-card {
+            background-color: #2d2d35;
             border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            padding: 2rem 1.5rem;
+            max-width: 200px;
+            width: 200px;
+            height: auto;
+            margin: 5rem auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 1.5rem;
         }
-        .form-label {
-            font-weight: 500;
+
+        h1, p {
+            margin: 0;
+            padding: 0;
+            text-align: center;
         }
-        .btn-success, .btn-primary {
+
+        p {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-glow, .btn-glow-purple {
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+            transition: box-shadow 0.3s ease-in-out;
+            border: none;
             font-weight: bold;
-            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem 0;
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 20px 5px rgba(212, 175, 55, 0.9);
+        }
+
+        /* Purple glow style but keep original bg and text colors */
+        .btn-glow-purple {
+            box-shadow: 0 0 8px rgba(106, 13, 173, 0.7);
+            transition: box-shadow 0.3s ease-in-out;
+            border: none;
+            font-weight: bold;
+            background-color: #6a0dad;  /* original purple background */
+            color: #fff;                 /* original white text */
+        }
+
+        .btn-glow-purple:hover {
+            box-shadow: 0 0 20px 5px rgba(106, 13, 173, 0.9);
+        }
+
+        .neon-purple-text {
+            color: #d300ff;
+            text-shadow: 0 0 8px #d300ff, 0 0 12px #d300ff;
+        }
+
+        a.d-block {
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
+<div class="container dashboard-card text-center">
+    <h1 class="neon-purple-text">Welcome, Event Manager!</h1>
+    <p class="neon-purple-text">Manage your events and resources seamlessly with EventMaster.</p>
 
-<nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #702963;">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">EventMaster</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
+    <a href="EnterEvent_manager.jsp" class="d-block">
+        <button type="button" class="btn btn-glow" style="background-color: #d4af37; color: #000;">
+            <i class="bi bi-calendar-event"></i> Check Events
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="homepage.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                <li class="nav-item"><a class="btn btn-outline-light ms-2" href="admin_Login_page.jsp">Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </a>
 
-
-
-<div class="container shadow-lg my-5 p-4 rounded-3" style="background-color: #fff; border: 1px solid #ddd; max-width: 600px; height: 500px;">
-  
-  
-    <div class="text-center mb-4" style="margin-top: 50px;">
-        <h1 class="fw-bold" style="color: #702963;">Welcome, Event Manager!</h1>
-        <p class="text-muted">Manage your events and resources seamlessly with EventMaster.</p>
-    </div>
-    <div class="d-flex flex-column align-items-center justify-content-center h-100">
-        <a href="EnterEvent_manager.jsp" class="d-block mb-3 w-100">
-            <button type="button" class="btn btn-primary w-100 py-3" style="border-radius: 0.75rem; background-color:  #D4AF37; border-color: #702963;">
-                <i class="bi bi-calendar-event me-2"></i> Check Events
-            </button>
-        </a>
-        <a href="AddAditionalItems_manager.jsp" class="d-block w-100">
-            <button type="button" class="btn btn-success w-100 py-3" style="border-radius: 0.75rem; background-color: #702963; border-color: #28a745;">
-                <i class="bi bi-box-seam me-2"></i> Add Extra Items
-            </button>
-        </a>
-    </div>
+    <a href="AddAditionalItems_manager.jsp" class="d-block">
+    <button type="button" class="btn btn-glow-purple" style="background-color: #d300ff; color: #fff;">
+        <i class="bi bi-box-seam"></i> Add Extra Items
+    </button>
+</a>
 </div>
 
-
-
-<footer style="background-color: #702963;" class="text-white mt-5 pt-4 pb-2">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <h5>EventMaster</h5>
-                <p>Creating unforgettable experiences through seamless event management.</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white text-decoration-none">Home</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Events</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Packages</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Follow Us</h5>
-                <a href="https://web.facebook.com/" class="text-white me-2"><i class="bi bi-facebook"></i></a>
-                <a href="https://x.com/" class="text-white me-2"><i class="bi bi-twitter"></i></a>
-                <a href="https://www.instagram.com/" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                <a href="https://lk.linkedin.com/" class="text-white"><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-        <hr class="bg-light">
-        <p class="mb-0">&copy; 2025 EventMaster. All Rights Reserved.</p>
-    </div>
-</footer>
-
+<%@ include file="footer.jsp" %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
