@@ -10,20 +10,6 @@
 </welcome-file-list>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Insert Package Servlet -->
     <servlet>
         <servlet-name>InsertPackageDetailsServlet</servlet-name>
@@ -98,6 +84,20 @@
     </servlet-mapping>
 
     <!-- LogBookViewServlet -->
+    
+    <servlet>
+    	<servlet-name>adminLoginServlet</servlet-name>
+    	<servlet-class>com.EliteEvents.AdminLogin.adminLoginServlet</servlet-class>
+	</servlet>
+
+<servlet-mapping>
+    <servlet-name>adminLoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+</servlet-mapping>
+    
+    
+ 
+    
     
 
 </web-app>

@@ -108,15 +108,15 @@
       </div>
     </c:if>
 
-    <form action="adminLoginServlet" method="POST">
+    <form action="login" method="POST">
       <div class="mb-3">
         <label for="username" class="form-label">User Name:</label>
-        <input type="text" id="username" name="EC_Username" class="form-control" required>
+        <input type="text" id="username" name="Username" class="form-control" required>
       </div>
 
       <div class="mb-4">
         <label for="password" class="form-label">Password:</label>
-        <input type="password" id="password" name="EC_Password" class="form-control" required>
+        <input type="password" id="password" name="Password" class="form-control" required>
       </div>
 
       <div class="d-grid mb-3">
