@@ -80,7 +80,7 @@
 <script type="text/javascript">
   // Function to navigate to the user login page
   function navigateToUserLogin() {
-    window.location.href = 'user_login.jsp'; // [2]
+    window.location.href = '<%= request.getContextPath() %>/loginview'; // [2]
   }
 
   // Function to navigate to the admin login page

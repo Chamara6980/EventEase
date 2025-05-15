@@ -1,12 +1,12 @@
-package sliit.eventmng.dao;
+package com.EliteEvents.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import sliit.eventmng.DBUtil.DBUtil;
-import sliit.eventmng.model.User;
+import com.EliteEvents.DBUtil.DBUtil;
+import com.EliteEvents.Model.User;
 
 public class UserDAO {
 
