@@ -97,7 +97,7 @@ body {
 			<ul class="navbar-nav align-items-center">
 				<li class="nav-item"><a class="nav-link active"
 					href="homepage.jsp">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+				<li class="nav-item"><a class="nav-link" href="event">Events</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
 
@@ -111,10 +111,15 @@ body {
 				<%
 				} else {
 				%>
-				<li class="nav-item"><a class="nav-link" href="askingactor.jsp"><i
-						class="bi bi-box-arrow-in-right"></i> Login</a> <a class="nav-link"
-					href="registerform"><i class="bi bi-box-arrow-in-right"></i>
-						Register</a></li>
+				<a class="nav-link"
+					href="<%=request.getContextPath()%>/askingactor.jsp"> <i
+					class="bi bi-box-arrow-in-right"></i> Login
+				</a>
+				<a class="nav-link"
+					href="<%=request.getContextPath()%>/registerform"> <i
+					class="bi bi-box-arrow-in-right"></i> Register
+				</a>
+
 				<%
 				}
 				%>

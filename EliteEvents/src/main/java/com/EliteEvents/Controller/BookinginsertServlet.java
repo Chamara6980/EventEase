@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sliit.eventmng.dao.BookingDAO;
+import com.EliteEvents.Dao.BookingDAO;
 
 //@WebServlet("/BookinginsertServlet")
 public class BookinginsertServlet extends HttpServlet {

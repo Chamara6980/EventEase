@@ -16,7 +16,7 @@ public class HomeViewServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/homepage.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/eventhubhomepage.jsp");
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
