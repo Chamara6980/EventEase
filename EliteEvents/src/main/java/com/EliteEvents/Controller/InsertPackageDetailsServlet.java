@@ -1,7 +1,6 @@
 package com.EliteEvents.Controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +20,18 @@ public class InsertPackageDetailsServlet extends HttpServlet {
             String items = request.getParameter("Items");
             String price = request.getParameter("Price");
 
+            EventPackagesDao db = new EventPackagesDao();
+
+            // Check if the package ID already exists
+            if (db.isPackageIdExists(id)) {
+                // ID already exists – show error
+                request.setAttribute("errorMessage", "Package ID already exists and cannot be reused.");
+                request.getRequestDispatcher("Package_Insertion_Unsuccess.jsp").forward(request, response);
+                return;
+            }
+
+            // Proceed to insert if ID is unique
             EventPackages pkg = new EventPackages(id, name, type, venue, items, price);
-            EventPackagesDao db = new EventPackagesDao(); 
             String result = db.insert(pkg);
 
             if ("Data Entered".equals(result)) {
@@ -30,8 +39,10 @@ public class InsertPackageDetailsServlet extends HttpServlet {
             } else {
                 request.getRequestDispatcher("Package_Insertion_Unsuccess.jsp").forward(request, response);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
+            request.setAttribute("errorMessage", "An error occurred during insertion.");
             request.getRequestDispatcher("Package_Insertion_Unsuccess.jsp").forward(request, response);
         }
     }

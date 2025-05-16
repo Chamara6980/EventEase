@@ -1,60 +1,151 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Event Details</title>
 
-    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
     <style>
         body {
-            background: linear-gradient(to right, #f2f2f2, #e6f2ff);
+            background: linear-gradient(135deg, #1f1f1f, #4c4c4c);
+            color: #f1f1f1;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         .table-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            background-color: #2d2d35;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(211, 0, 255, 0.7);
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2rem 2rem;
+            color: #f1f1f1;
         }
-        .btn-group a {
+
+        h2 {
+            color: #d300ff;
+            text-shadow: 0 0 8px #d300ff, 0 0 12px #d300ff;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 900;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        tbody tr:nth-child(odd) td {
+            background-color: #44444e;
+        }
+
+        tbody tr:nth-child(even) td {
+            background-color: #3e3e4f;
+        }
+
+        tbody td {
+            padding: 12px 15px;
+            border: 1px solid #6e00d3;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        tbody tr:hover td {
+            background-color: #6e00d3;
+            color: #fff;
+            cursor: default;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px 2px #d300ff;
+        }
+
+        th {
+            background-color: #3e3e4f;
+            color: #d300ff;
+            padding: 12px 15px;
+            border: 1px solid #6e00d3;
+            font-weight: 700;
+            text-align: left;
+            text-shadow: 0 0 4px #d300ff;
+        }
+
+        .btn-purple, .btn-danger {
+            display: inline-block;
+            margin: 0 4px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-align: center;
             text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            box-shadow: 0 0 8px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .btn-purple {
+            background-color: #d300ff;
+            box-shadow: 0 0 8px #d300ff;
+            color: white;
+            border: none;
+        }
+
+        .btn-purple:hover {
+            box-shadow: 0 0 20px 6px #d300ff;
+        }
+
+        .btn-danger {
+            background-color: #ff0054;
+            box-shadow: 0 0 8px #ff0054;
+            color: white;
+            border: none;
+        }
+
+        .btn-danger:hover {
+            box-shadow: 0 0 20px 6px #ff0054;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn-group a {
+            flex: 1;
+        }
+
+        .btn-success {
+            display: block;
+            width: 100%;
+            margin-top: 1.5rem;
+            font-weight: 900;
+        }
+
+        @media (max-width: 768px) {
+            .table-container {
+                margin: 2rem 1rem;
+                padding: 1rem 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #702963;">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">EventMaster</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="homepage.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                <li class="nav-item"><a class="btn btn-outline-light ms-2" href="admin_Login_page.jsp">Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
 
 <div class="table-container">
-    <h2 class="text-center mb-4 text-primary">Event Details</h2>
-    <table class="table table-bordered">
+    <h2><i class="bi bi-info-circle"></i> Event Details</h2>
+    <table>
         <tbody>
             <c:forEach var="evt" items="${eventDetails}">
                 <c:set var="event_id" value="${evt.event_id}" />
@@ -92,8 +183,7 @@
         </tbody>
     </table>
 
-    
-    <div class="btn-group d-flex gap-2 mt-4">
+    <div class="btn-group">
         <c:url value="UpdateItems_manager.jsp" var="evtupdate">
             <c:param name="event_id" value="${event_id}" />
             <c:param name="pck_id" value="${pck_id}" />
@@ -102,7 +192,7 @@
             <c:param name="items" value="${items}" />
             <c:param name="price" value="${price}" />
         </c:url>
-        <a href="${evtupdate}" class="btn btn-warning w-100 fw-bold">Update Event</a>
+        <a href="${evtupdate}" class="btn-purple">Update Event</a>
 
         <c:url value="DeleteEvent_manager.jsp" var="evtdelete">
             <c:param name="event_id" value="${event_id}" />
@@ -112,42 +202,13 @@
             <c:param name="items" value="${items}" />
             <c:param name="price" value="${price}" />
         </c:url>
-        <a href="${evtdelete}" class="btn btn-danger w-100 fw-bold">Delete Event</a>
+        <a href="${evtdelete}" class="btn-danger" onclick="return confirm('Are you sure you want to delete this event?');">Delete Event</a>
     </div>
 
-    <a href="ManagerHome.jsp" class="btn btn-success w-100 mt-3 fw-bold">Go to Home Page</a>
+    <a href="ManagerHome.jsp" class="btn btn-success">Go to Home Page</a>
 </div>
 
-<!-- Footer -->
-<footer style="background-color: #702963;" class="text-white mt-5 pt-4 pb-2">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <h5>EventMaster</h5>
-                <p>Creating unforgettable experiences through seamless event management.</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white text-decoration-none">Home</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Events</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Packages</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Follow Us</h5>
-                <a href="https://web.facebook.com/" class="text-white me-2"><i class="bi bi-facebook"></i></a>
-                <a href="https://x.com/" class="text-white me-2"><i class="bi bi-twitter"></i></a>
-                <a href="https://www.instagram.com/" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                <a href="https://lk.linkedin.com/" class="text-white"><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-        <hr class="bg-light">
-        <p class="mb-0">&copy; 2025 EventMaster. All Rights Reserved.</p>
-    </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<%@ include file="footer.jsp" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -141,7 +141,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Additional JavaScript validation for Price field to ensure positive number
+    //price must be positive
     document.getElementById('packageForm').addEventListener('submit', function(event) {
         const priceInput = document.getElementById('Price').value.trim();
         const price = parseFloat(priceInput);

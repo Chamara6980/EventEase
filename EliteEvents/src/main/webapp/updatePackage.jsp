@@ -116,7 +116,11 @@
 
     <% if (pkg != null) { %>
         <form action="update" method="post">
-            <input type="hidden" name="packageId" value="<%= pkg.getPackage_Id() %>" />
+            <label for="packageIdDisplay">Package ID</label>
+			<input type="text" id="packageIdDisplay" value="<%= pkg.getPackage_Id() %>" readonly />
+
+			<input type="hidden" name="packageId" value="<%= pkg.getPackage_Id() %>" />
+
 
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="<%= pkg.getPackage_Name() %>" required />
@@ -135,7 +139,9 @@
 
             <input type="submit" value="Update Package" />
         </form>
-    <% } else { %>
+    <% } else 
+    	
+    { %>
         <div class="alert-warning" role="alert">
             Package not found. Please try again later.
         </div>

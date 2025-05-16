@@ -143,4 +143,22 @@ public class EventPackagesDao {
             return false;
         }
     }
+    
+ // Checks whether the Package_Id already exists
+    public boolean isPackageIdExists(int id) {
+        boolean exists = false;
+        try {
+            Connection con = getConnection();
+            String sql = "SELECT Package_Id FROM event_packages WHERE Package_Id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            exists = rs.next(); // true if there's a record
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
+
 }
