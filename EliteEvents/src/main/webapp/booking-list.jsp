@@ -55,6 +55,15 @@
 			</c:forEach>
 		</div>
 	</div>
+	
+	<!-- Back to Home Button -->
+	<div class="container pb-4">
+		<div class="d-flex justify-content-center">
+			<a href="home" class="btn btn-secondary btn-lg mt-4">
+				<i class="bi bi-house-door"></i> Back to Home
+			</a>
+		</div>
+	</div>
 
 	<!-- Bootstrap JS (optional, for interactivity) -->
 	<script

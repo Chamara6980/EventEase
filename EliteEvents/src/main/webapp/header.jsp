@@ -86,7 +86,7 @@ body {
 
 <nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top">
 	<div class="container">
-		<a class="navbar-brand fw-bold" href="homepage.jsp">EventHub</a>
+		<a class="navbar-brand fw-bold" href="home">EventHub</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -96,7 +96,7 @@ body {
 			id="navbarNav">
 			<ul class="navbar-nav align-items-center">
 				<li class="nav-item"><a class="nav-link active"
-					href="homepage.jsp">Home</a></li>
+					href="home">Home</a></li>
 				<li class="nav-item"><a class="nav-link" href="event">Events</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
