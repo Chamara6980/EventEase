@@ -23,14 +23,15 @@ public class InsertPackageDetailsServlet extends HttpServlet {
             EventPackagesDao db = new EventPackagesDao();
 
             // Check if the package ID already exists
-            if (db.isPackageIdExists(id)) {
-                // ID already exists – show error
+            if (db.isPackageIdExists(id)) 
+            
+            {
+                // If ID already exists – show error message
                 request.setAttribute("errorMessage", "Package ID already exists and cannot be reused.");
                 request.getRequestDispatcher("Package_Insertion_Unsuccess.jsp").forward(request, response);
                 return;
             }
 
-            // Proceed to insert if ID is unique
             EventPackages pkg = new EventPackages(id, name, type, venue, items, price);
             String result = db.insert(pkg);
 
@@ -40,9 +41,12 @@ public class InsertPackageDetailsServlet extends HttpServlet {
                 request.getRequestDispatcher("Package_Insertion_Unsuccess.jsp").forward(request, response);
             }
 
-        } catch (Exception e) {
+        } 
+        	catch (Exception e) 
+        {
             e.printStackTrace();
             request.setAttribute("errorMessage", "An error occurred during insertion.");
+            
             request.getRequestDispatcher("Package_Insertion_Unsuccess.jsp").forward(request, response);
         }
     }

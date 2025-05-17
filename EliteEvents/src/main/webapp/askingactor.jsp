@@ -78,12 +78,14 @@
 </div>
 
 <script type="text/javascript">
-  // Function to navigate to the user login page
+
+
+  // Function for user pages
   function navigateToUserLogin() {
     window.location.href = 'login.jsp'; // [2]
   }
 
-  // Function to navigate to the admin login page
+  // function for admin pages
   function navigateToAdminLogin() {
     window.location.href = 'admin_Login_page.jsp'; // [2]
   }

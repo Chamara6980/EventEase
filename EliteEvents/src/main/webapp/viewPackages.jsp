@@ -163,6 +163,7 @@
 <div class="table-container">
     <h2><i class="bi bi-list-ul"></i> Package List</h2>
 
+<!-- view details in arraylist -->
     <%
         List<EventPackages> packageList = (List<EventPackages>) request.getAttribute("packageList");
         if (packageList != null && !packageList.isEmpty()) {

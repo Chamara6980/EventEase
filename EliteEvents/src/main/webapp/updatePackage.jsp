@@ -100,9 +100,11 @@
 </head>
 <body>
 
+<!-- get specific package id -->
 <%
     String packageIdStr = request.getParameter("id");
     EventPackagesDao dao = new EventPackagesDao();
+    
     EventPackages pkg = null;
 
     if (packageIdStr != null) {

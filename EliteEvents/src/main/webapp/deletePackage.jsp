@@ -114,18 +114,25 @@
 </head>
 <body>
 
+<!--get specific package id from db -->
 <%
     String packageIdStr = request.getParameter("id");
+
     EventPackagesDao pkgDao = new EventPackagesDao();
     EventPackages pkg = null;
+    
     if (packageIdStr != null) {
         int packageId = Integer.parseInt(packageIdStr);
         pkg = pkgDao.getPackageById(packageId);
     }
 %>
 
+
+
+<!-- confirm wheather package wanted to delete or not -->
 <div class="confirmation-container">
     <h1>Confirm Deletion</h1>
+
 
     <% if (pkg != null) { %>
         <p class="confirmation-text">Are you sure you want to delete the following package?</p>

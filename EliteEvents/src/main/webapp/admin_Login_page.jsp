@@ -101,7 +101,7 @@
   <div class="login-card">
     <h3>Admin Login</h3>
 
-    <!-- Error Message -->
+    <!-- if user enter empty values -->
     <c:if test="${not empty error}">
       <div class="alert alert-danger text-center">
         ${error}
@@ -109,11 +109,12 @@
     </c:if>
 
     <form action="login" method="POST">
+       
       <div class="mb-3">
         <label for="username" class="form-label">User Name:</label>
         <input type="text" id="username" name="Username" class="form-control" required>
       </div>
-
+      
       <div class="mb-4">
         <label for="password" class="form-label">Password:</label>
         <input type="password" id="password" name="Password" class="form-control" required>
