@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.EliteEvents.Dao.BookingDAO;
 import com.EliteEvents.Model.Booking;
 
-//@WebServlet("/BookingEditServlet")
+
 public class BookingEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

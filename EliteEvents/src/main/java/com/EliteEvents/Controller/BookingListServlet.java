@@ -13,7 +13,7 @@ import com.EliteEvents.Dao.BookingDAO;
 import com.EliteEvents.Model.Booking;
 
 
-//@WebServlet("/BookingListServlet")
+
 public class BookingListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

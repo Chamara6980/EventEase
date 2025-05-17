@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.EliteEvents.Dao.UserDAO;
 
-//@WebServlet("/LoginValidationServlet")
+
 public class LoginValidationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 private UserDAO userDao;

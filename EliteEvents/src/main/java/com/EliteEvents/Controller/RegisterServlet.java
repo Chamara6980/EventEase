@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.EliteEvents.Dao.UserDAO;
 import com.EliteEvents.Model.User;
 
-//@WebServlet("/AuthServlet")
+
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDAO userDao = new UserDAO();

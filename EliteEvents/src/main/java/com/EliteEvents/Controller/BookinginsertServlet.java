@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.EliteEvents.Dao.BookingDAO;
 
-//@WebServlet("/BookinginsertServlet")
+
 public class BookinginsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
