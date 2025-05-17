@@ -1,237 +1,251 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<%@ page import="com.EliteEvents.Model.logBookModel, com.EliteEvents.Dao.LogBookServices, java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.EliteEvents.Model.logBookModel" %>
+<%@ page import="com.EliteEvents.Dao.LogBookServices" %>
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Log Book Records</title>
-    
+
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <!-- Internal CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
     <style>
         body {
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #1f1f1f, #4c4c4c);
+            color: #f1f1f1;
+            min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        nav.navbar {
-            background-color: #702963;
+
+        .table-container {
+            background-color: #2d2d35;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(211, 0, 255, 0.7);
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2rem;
+            color: #f1f1f1;
         }
-        nav .navbar-brand {
-            font-size: 1.5rem;
-        }
-        nav .nav-link {
-            color: #ffffff !important;
-        }
-        nav .btn-outline-light {
-            border-color: #ffffff;
-        }
+
         h2 {
-            margin-top: 30px;
-            color: #702963;
+            color: #d300ff;
+            text-shadow: 0 0 8px #d300ff, 0 0 12px #d300ff;
             text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
+            margin-bottom: 2rem;
+            font-weight: 900;
         }
+
         table {
             width: 100%;
-            margin-top: 20px;
             border-collapse: collapse;
         }
-        table th, table td {
-            padding: 12px;
+
+        thead th {
+            background-color: #3e3e4f;
+            color: #d300ff;
+            padding: 12px 15px;
+            border: 1px solid #6e00d3;
             text-align: center;
-            border: 1px solid #ddd;
+            font-weight: 700;
+            text-shadow: 0 0 4px #d300ff;
         }
-        table th {
-            background-color: #702963;
+
+        tbody td {
+            background-color: #44444e;
+            padding: 12px 15px;
+            border: 1px solid #6e00d3;
+            text-align: center;
+            color: #f1f1f1;
+        }
+
+        tbody tr:hover td {
+            background-color: #6e00d3;
             color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px 2px #d300ff;
         }
-        table td {
-            background-color: #f9f9f9;
+
+        td[data-label="Actions"] {
+            white-space: nowrap;
         }
-        table tr:nth-child(even) {
-            background-color: #f2f2f2;
+
+        .btn-purple, .btn-danger {
+            display: inline-block;
+            margin: 0 4px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: box-shadow 0.3s ease;
+            border: none;
         }
-        
-        .footer {
-            background-color: #702963;
-            padding: 20px 0;
+
+        .btn-purple {
+            background-color: #d300ff;
+            box-shadow: 0 0 8px #d300ff;
             color: white;
-            bottom: 0;
-            width: 100%;
         }
-        .footer a {
-            color: #ffffff;
-            text-decoration: none;
+
+        .btn-purple:hover {
+            box-shadow: 0 0 20px 6px #d300ff;
         }
-        .footer a:hover {
-            text-decoration: underline;
+
+        .btn-danger {
+            background-color: #ff0054;
+            box-shadow: 0 0 8px #ff0054;
+            color: white;
         }
-        .footer hr {
-            border-color: rgba(255, 255, 255, 0.2);
+
+        .btn-danger:hover {
+            box-shadow: 0 0 20px 6px #ff0054;
         }
-        
-        .btn-add-record {
-	        background-color: #28a745;
-	        color: white;
-	        border-radius: 5px;
-	        margin-top: 10px;
-	        width: 200px;
-	        border: none;
-	        transition: background-color 0.3s ease;
-	        
-	    }
-	
-	    .btn-add-record:hover {
-	        background-color: #218838;
-	        color: white;
-	    }
-	
-	    .btn-back-home {
-	        background-color: #007bff;
-	        color: white;
-	        border-radius: 5px;
-	        margin-top: 10px;
-	        width: 200px;
-	        border: none;
-	        transition: background-color 0.3s ease;
-	    }
-	
-	    .btn-back-home:hover {
-	        background-color: #0056b3;
-	        color: white;
-	    }
+
+        .action-buttons form {
+            display: inline;
+        }
+
+        .no-data-msg {
+            text-align: center;
+            color: #bbb;
+            font-style: italic;
+            padding: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        .btn-add-record, .btn-back-home {
+            margin: 1rem 0.5rem;
+            padding: 0.5rem 1.2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.6rem;
+            border: none;
+            cursor: pointer;
+            color: white;
+            background-color: #6e00d3;
+            box-shadow: 0 0 10px #d300ff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .btn-add-record:hover, .btn-back-home:hover {
+            box-shadow: 0 0 20px 8px #d300ff;
+        }
+
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                display: none;
+            }
+
+            tbody tr {
+                margin-bottom: 1rem;
+                background-color: #44444e;
+                border-radius: 0.5rem;
+                padding: 1rem;
+            }
+
+            tbody td {
+                padding-left: 50%;
+                text-align: left;
+                position: relative;
+                border: none;
+                border-bottom: 1px solid #6e00d3;
+            }
+
+            tbody td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                font-weight: 700;
+                color: #d300ff;
+            }
+
+            tbody td:last-child {
+                border-bottom: 0;
+            }
+        }
     </style>
 </head>
 <body>
 
-<!-- Header with custom background color -->
-<nav class="navbar navbar-expand-lg navbar-dark shadow">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">EventMaster</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="homepage.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                <li class="nav-item"><a class="btn btn-outline-light ms-2" href="admin_Login_page.jsp">Login</a></li>
-            </ul>
-        </div>
+<div class="table-container">
+    <h2><i class="bi bi-journal-text"></i> Log Book Records</h2>
+
+    <%
+        LogBookServices service = new LogBookServices();
+        List<logBookModel> logList = service.showLogBook();
+
+        if (logList != null && !logList.isEmpty()) {
+    %>
+    <div class="table-responsive">
+        <table>
+            <thead>
+            <tr>
+                <th>Event ID</th>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>Customer Name</th>
+                <th>Rating</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%
+                for (logBookModel log : logList) {
+            %>
+            <tr>
+                <td data-label="Event ID"><%= log.getEventId() %></td>
+                <td data-label="Venue"><%= log.getVenue() %></td>
+                <td data-label="Date"><%= log.getDate() %></td>
+                <td data-label="Customer Name"><%= log.getCusName() %></td>
+                <td data-label="Rating"><%= log.getUserRating() %></td>
+                <td data-label="Actions" class="action-buttons">
+                    <form method="post" action="logBookUpdate.jsp">
+                        <input type="hidden" name="EvendId" value="<%= log.getEventId() %>" />
+                        <input type="hidden" name="venue" value="<%= log.getVenue() %>" />
+                        <input type="hidden" name="Date" value="<%= log.getDate() %>" />
+                        <input type="hidden" name="customerName" value="<%= log.getCusName() %>" />
+                        <input type="hidden" name="rating" value="<%= log.getUserRating() %>" />
+                        <button type="submit" class="btn-purple">Update</button>
+                    </form>
+                    <form method="post" action="logBookDelete.jsp" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                        <input type="hidden" name="EvendId" value="<%= log.getEventId() %>" />
+                        <input type="hidden" name="venue" value="<%= log.getVenue() %>" />
+                        <input type="hidden" name="Date" value="<%= log.getDate() %>" />
+                        <input type="hidden" name="customerName" value="<%= log.getCusName() %>" />
+                        <input type="hidden" name="rating" value="<%= log.getUserRating() %>" />
+                        <button type="submit" class="btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
     </div>
-</nav>
+    <% } else { %>
+        <p class="no-data-msg">No records found.</p>
+    <% } %>
 
-<h2>Log Book Records</h2>
-
-<%
-    // Fetching the log book list from the service
-    LogBookServices service = new LogBookServices();
-    List<logBookModel> logList = service.showLogBook();
-
-    if (logList != null && !logList.isEmpty()) {
-%>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Event Id</th>
-            <th>Venue</th>
-            <th>Date</th>
-            <th>Customer Name</th>
-            <th>Rating</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    <%  
-        // Iterating through the list to display each log
-        for (logBookModel log : logList) {
-    %>
-        <tr>
-            <td><%= log.getEventId() %></td>
-            <td><%= log.getVenue() %></td>
-            <td><%= log.getDate() %></td>
-            <td><%= log.getCusName() %></td>
-            <td><%= log.getUserRating() %></td>
-            <td>
-                <form action="logbookupdate" method="post" style="display:inline;">
-                    <input type="hidden" name="EvendId" value="<%= log.getEventId() %>" />
-                    <input type="hidden" name="venue" value="<%= log.getVenue() %>" />
-                    <input type="hidden" name="Date" value="<%= log.getDate() %>" />
-                    <input type="hidden" name="customerName" value="<%= log.getCusName() %>" />
-                    <input type="hidden" name="rating" value="<%= log.getUserRating() %>" />
-                    <button type="submit" formaction="logBookUpdate.jsp" class="btn btn-primary">Update</button>
-                </form>
-                
-                <form action="logbookdelete" method="post" style="display:inline;">
-                    <input type="hidden" name="EvendId" value="<%= log.getEventId() %>" />
-                    <input type="hidden" name="venue" value="<%= log.getVenue() %>" />
-                    <input type="hidden" name="Date" value="<%= log.getDate() %>" />
-                    <input type="hidden" name="customerName" value="<%= log.getCusName() %>" />
-                    <input type="hidden" name="rating" value="<%= log.getUserRating() %>" />
-                    <button type="submit" formaction="logBookDelete.jsp" class="btn btn-danger">Delete</button>
-                </form>
-            </td>
-        </tr>   
-    <%  
-        } 
-    %>
-    </tbody>
-</table>
-
-<% } else { %>
-    <p class="text-center text-danger">No records found.</p>
-<% } %>
-
-<div class="text-center">
-    <a href="logBookInsertInterface.jsp">
-        <button class="btn-add-record">Add New Record</button>
-    </a>
-    <br>
-    <a href="customerCareAgent.jsp">
-        <button class="btn-back-home">Back to Home</button>
-    </a>
-    <br><br>
+    <div class="text-center">
+        <a href="logBookInsertInterface.jsp">
+            <button class="btn-add-record"><i class="bi bi-plus-lg"></i> Add New Record</button>
+        </a>
+        <a href="customerCareAgent.jsp">
+            <button class="btn-back-home"><i class="bi bi-house-fill"></i> Back to Home</button>
+        </a>
+    </div>
 </div>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <h5>EventMaster</h5>
-                <p>Creating unforgettable experiences through seamless event management.</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-decoration-none">Home</a></li>
-                    <li><a href="#" class="text-decoration-none">Events</a></li>
-                    <li><a href="#" class="text-decoration-none">Packages</a></li>
-                    <li><a href="#" class="text-decoration-none">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Follow Us</h5>
-                <a href="https://web.facebook.com/" class="text-white me-2"><i class="bi bi-facebook"></i></a>
-                <a href="https://x.com/" class="text-white me-2"><i class="bi bi-twitter"></i></a>
-                <a href="https://www.instagram.com/" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                <a href="https://lk.linkedin.com/" class="text-white"><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-        <hr>
-        <p class="mb-0">&copy; 2025 EventMaster. All Rights Reserved.</p>
-    </div>
-</footer>
-
+<%@ include file="footer.jsp" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

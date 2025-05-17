@@ -1,136 +1,139 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Enter Event</title>
-    
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom right, #ffffff, #d3d3d3);
+            background: linear-gradient(135deg, #1f1f1f, #4c4c4c);
+            color: #f1f1f1;
+            min-height: 100vh;
         }
 
         .form-container {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 30px;
-            max-width: 500px;
-            margin: 50px auto;
-            box-shadow: 0 4px 20px rgba(88, 85, 217, 0.2);
+            background-color: #2d2d35;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+            margin: 4rem auto;
+            padding: 2rem 2rem;
+            color: #f1f1f1;
         }
 
-        .form-container h1 {
-            color: #5e35b1;
-            margin-bottom: 20px;
+        h1 {
+            color: #d300ff;
+            text-shadow: 0 0 8px #d300ff, 0 0 12px #d300ff;
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
-        .form-container label {
-            font-size: 1.1rem;
-            color: #4527a0;
+        label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #d300ff;
+            text-shadow: 0 0 6px #d300ff;
         }
 
-        .form-container input[type="text"] {
-            background: #ede7f6;
-            border: 1px solid #c5cae9;
-            border-radius: 8px;
-            color: #4a4a4a;
-        }
-
-        .form-container input[type="text"]:focus {
-            border-color: #7e57c2;
-        }
-
-        .form-container button[type="submit"] {
-            background: #007bff; 
+        input[type="text"] {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
             border: none;
-            border-radius: 8px;
-            color: #ffffff;
+            background-color: #44444e;
+            color: #f1f1f1;
+            box-shadow: inset 0 0 8px rgba(211, 0, 255, 0.7);
+            transition: background-color 0.3s ease;
         }
 
-        .form-container button[type="submit"]:hover {
-            background: #0056b3; 
-            transform: scale(1.02);
+        input[type="text"]:focus {
+            background-color: #5a1aff;
+            outline: none;
+            box-shadow: 0 0 12px #d300ff;
+            color: white;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #d300ff;
+            border: none;
+            border-radius: 0.75rem;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 12px #d300ff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            box-shadow: 0 0 24px 6px #d300ff;
+        }
+
+        .btn-home {
+            display: block;
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.75rem;
+            background-color: #8a2be2; /* Electric Violet */
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 0 12px #8a2be2;
+            transition: box-shadow 0.3s ease-in-out, transform 0.2s;
+        }
+
+        .btn-home:hover {
+            box-shadow: 0 0 24px 6px #8a2be2;
+            transform: scale(1.03);
         }
     </style>
 </head>
 <body>
 
-
-<nav class="navbar navbar-expand-lg navbar-dark shadow" style="background-color: #702963;">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">EventMaster</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="homepage.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                <li class="nav-item"><a class="btn btn-outline-light ms-2" href="admin_Login_page.jsp">Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
 <div class="form-container">
-    <h1 class="text-center">Enter Event</h1>
+    <h1>Enter Event</h1>
     <form action="EnterEventServlet_manager" method="post">
         <label for="event_id">Event ID</label>
-        <input type="text" id="event_id" name="event_id" placeholder="Enter Event ID" required class="form-control mb-3">
+        <input type="text" id="event_id" name="event_id" placeholder="Enter Event ID" required>
 
         <label for="pck_id">Package ID</label>
-        <input type="text" id="pck_id" name="pck_id" placeholder="Enter Package ID" required class="form-control mb-3">
+        <input type="text" id="pck_id" name="pck_id" placeholder="Enter Package ID" required>
 
-        <button type="submit" name="submit" class="btn btn-primary w-100">
-            <i class="bi bi-check-circle"></i> Enter
-        </button>
+        <button type="submit" name="submit">Enter</button>
     </form>
-    <a href="ManagerHome.jsp" class="btn btn-success w-100 mt-3">
-        <i class="bi bi-arrow-left-circle"></i> Go to Home Page
-    </a>
+
+    <a href="ManagerHome.jsp" class="btn-home">Go to Home Page</a>
 </div>
 
+<script>
+	document.querySelector("form").addEventListener("submit", function (e) {
+	    const eventId = document.getElementById("event_id").value;
+	    const packageId = document.getElementById("pck_id").value;
+	
+	    if (!/^\d+$/.test(eventId)) {
+	        e.preventDefault();
+	        alert("Event ID must be numeric.");
+	    } else if (!/^\d+$/.test(packageId)) {
+	        e.preventDefault();
+	        alert("Package ID must be numeric.");
+	    }
+	});
+</script>
 
-
-<footer style="background-color: #702963;" class="text-white mt-5 pt-4 pb-2">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <h5>EventMaster</h5>
-                <p>Creating unforgettable experiences through seamless event management.</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white text-decoration-none">Home</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Events</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Packages</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Follow Us</h5>
-                <a href="https://web.facebook.com/" class="text-white me-2"><i class="bi bi-facebook"></i></a>
-                <a href="https://x.com/" class="text-white me-2"><i class="bi bi-twitter"></i></a>
-                <a href="https://www.instagram.com/" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                <a href="https://lk.linkedin.com/" class="text-white"><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-        <hr class="bg-light">
-        <p class="mb-0">&copy; 2025 EventMaster. All Rights Reserved.</p>
-    </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+<%@ include file="footer.jsp" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,20 +1,24 @@
 package com.EliteEvents.AdminLogin;
 
+
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 public class adminLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    // Database connection details - replace with your actual credentials
+    // db connect
     private static final String DB_URL = "jdbc:mysql://localhost:3306/eventease_database";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "Chamara123@";
@@ -23,6 +27,8 @@ public class adminLoginServlet extends HttpServlet {
         String username = request.getParameter("Username");
         String password = request.getParameter("Password");
 
+        
+        //if user enter null value or wrong credentials,navigates to login page again
         if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
             request.setAttribute("error", "Please enter both username and password.");
             request.getRequestDispatcher("admin_Login.jsp").forward(request, response);
@@ -36,17 +42,21 @@ public class adminLoginServlet extends HttpServlet {
             // Load MySQL JDBC Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) 
+            {
                 // Query to check username and password
                 String sql = "SELECT username FROM admins WHERE username = ? AND password = ?";
                 try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                     stmt.setString(1, username);
-                    stmt.setString(2, password); // Use hashed passwords in production!
+                    stmt.setString(2, password);
+                    
+                    
 
                     try (ResultSet rs = stmt.executeQuery()) {
                         if (rs.next()) {
                             isValidUser = true;
 
+                            
                             // Redirect based on username
                             if ("ccagent".equalsIgnoreCase(username)) {
                                 redirectPage = "customerCareAgent.jsp";

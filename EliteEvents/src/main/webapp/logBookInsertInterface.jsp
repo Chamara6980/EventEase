@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
@@ -11,144 +9,128 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+          integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Internal CSS -->
     <style>
         body {
-            background-color: #f9f9f9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1f1f1f, #4c4c4c);
+            color: #f1f1f1;
+            min-height: 100vh;
         }
-        nav.navbar {
-            background-color: #702963;
-        }
-        nav .navbar-brand {
-            font-size: 1.5rem;
-        }
-        nav .nav-link {
-            color: #ffffff !important;
-        }
-        nav .btn-outline-light {
-            border-color: #ffffff;
-        }
+
         .form-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-top: 30px;
-            max-width: 600px;
+            background-color: #2d2d35;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+            margin: 4rem auto;
+            padding: 2rem 2rem;
+            color: #f1f1f1;
         }
-        label {
-            font-weight: 600;
-        }
-        input[type="text"] {
-            border-radius: 5px;
-        }
-        input[type="submit"] {
-            background-color: #702963;
-            color: white;
-            border-radius: 5px;
-        }
-        input[type="submit"]:hover {
-            background-color: #5d2153;
-        }
-        
+
         h2 {
-            margin-top: 30px;
-            color: #702963;
+            color: #d300ff;
+            text-shadow: 0 0 8px #d300ff, 0 0 12px #d300ff;
             text-align: center;
-            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #d300ff;
+            text-shadow: 0 0 6px #d300ff;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            background-color: #44444e;
+            color: #f1f1f1;
+            box-shadow: inset 0 0 8px rgba(211, 0, 255, 0.7);
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            background-color: #5a1aff;
+            outline: none;
+            box-shadow: 0 0 12px #d300ff;
+            color: white;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #d300ff;
+            border: none;
+            border-radius: 0.75rem;
+            color: white;
             font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 12px #d300ff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            box-shadow: 0 0 24px 6px #d300ff;
+        }
+
+        .redirect-button {
+            display: block;
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.75rem;
+            background-color: #8a2be2;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 0 12px #8a2be2;
+            transition: box-shadow 0.3s ease-in-out, transform 0.2s;
+        }
+
+        .redirect-button:hover {
+            box-shadow: 0 0 24px 6px #8a2be2;
+            transform: scale(1.03);
         }
     </style>
 </head>
 <body>
 
-<!-- Header with custom background color -->
-<nav class="navbar navbar-expand-lg navbar-dark shadow">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">EventMaster</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link active" href="homepage.jsp">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                <li class="nav-item"><a class="btn btn-outline-light ms-2" href="admin_Login_page.jsp">Login</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!-- Form Container -->
-<div class="container form-container">
-    <h2 >Log Report</h2><br>
+<div class="form-container">
+    <h2>Log Report</h2>
+    
     <form action="logbookinsert" method="post" name="formDetails">
-        <div class="mb-3">
-            <label for="EventId" class="form-label">Event ID:</label>
-            <input type="text" class="form-control" placeholder="Event ID" name="EvendId" required>
-        </div>
-        
-        <div class="mb-3">
-            <label for="venue" class="form-label">Venue:</label>
-            <input type="text" class="form-control" placeholder="Event Venue" name="venue" required>
-        </div>
-        
-        <div class="mb-3">
-            <label for="date" class="form-label">Date:</label>
-            <input type="text" class="form-control" placeholder="Date (YYYY-MM-DD)" name="Date" required>
-        </div>
-        
-        <div class="mb-3">
-            <label for="customerName" class="form-label">Customer Name:</label>
-            <input type="text" class="form-control" placeholder="Customer Name" name="customerName" required>
-        </div>
-        
-        <div class="mb-3">
-            <label for="rating" class="form-label">User Rating (0-5):</label>
-            <input type="text" class="form-control" placeholder="0 - 5" name="rating" min="0" max="5" required>
-        </div>
+        <label for="EventId">Event ID</label>
+        <input type="text" class="form-control" placeholder="Event ID" name="EvendId" required>
 
-        <div class="text-center">
-            <input type="submit" id="addBtn" value="ADD" name="add" class="btn btn-primary w-50">
-        </div>
+        <label for="venue">Venue</label>
+        <input type="text" class="form-control" placeholder="Event Venue" name="venue" required>
+
+        <label for="date">Date</label>
+        <input type="text" class="form-control" placeholder="Date (YYYY-MM-DD)" name="Date" required>
+
+        <label for="customerName">Customer Name</label>
+        <input type="text" class="form-control" placeholder="Customer Name" name="customerName" required>
+
+        <label for="rating">User Rating (0-5)</label>
+        <input type="text" class="form-control" placeholder="0 - 5" name="rating" min="0" max="5" required>
+
+        <input type="submit" id="addBtn" value="Add Log Entry" name="add">
     </form>
+
+    <a href="customerCareAgent.jsp" class="redirect-button">Go to Dashboard</a>
 </div>
 
-<!-- Footer with same color as header -->
-<footer style="background-color: #702963;" class="text-white mt-5 pt-4 pb-2">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <h5>EventMaster</h5>
-                <p>Creating unforgettable experiences through seamless event management.</p>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white text-decoration-none">Home</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Events</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Packages</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4 mb-3">
-                <h5>Follow Us</h5>
-                <a href="https://web.facebook.com/" class="text-white me-2"><i class="bi bi-facebook"></i></a>
-                <a href="https://x.com/" class="text-white me-2"><i class="bi bi-twitter"></i></a>
-                <a href="https://www.instagram.com/" class="text-white me-2"><i class="bi bi-instagram"></i></a>
-                <a href="https://lk.linkedin.com/" class="text-white"><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-        <hr class="bg-light">
-        <p class="mb-0">&copy; 2025 EventMaster. All Rights Reserved.</p>
-    </div>
-</footer>
-
+<%@ include file="footer.jsp" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

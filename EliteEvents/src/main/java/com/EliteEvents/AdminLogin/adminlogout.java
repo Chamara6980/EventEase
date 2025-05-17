@@ -14,6 +14,6 @@ public class adminlogout extends HttpServlet {
 		if (session != null) {
 			session.invalidate(); // Destroy session
 		}
-		response.sendRedirect("AdminLogin.jsp"); // Redirect to login page
+		response.sendRedirect("admin_Login_page.jsp"); // Redirect to login page
 	}
 }
