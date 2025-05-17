@@ -194,9 +194,5 @@
 		<servlet-name>BookingDeleteServlet</servlet-name>
 		<url-pattern>/deleteBooking</url-pattern>
 	</servlet-mapping>
-    
- 
-    
-    
-
+   
 </web-app>

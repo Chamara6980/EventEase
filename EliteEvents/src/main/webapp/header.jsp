@@ -97,7 +97,11 @@ body {
 			<ul class="navbar-nav align-items-center">
 				<li class="nav-item"><a class="nav-link active"
 					href="home">Home</a></li>
+<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="event">Events</a></li>
+=======
+				<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/event">Events</a></li>
+>>>>>>> branch 'main' of https://github.com/Chamara6980/EventEase.git
 				<li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
 
